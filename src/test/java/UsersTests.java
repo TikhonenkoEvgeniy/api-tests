@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Map;
 
 public class UsersTests {
 
@@ -55,6 +54,8 @@ public class UsersTests {
                 .then().log().all()
                 .spec(Spec.responseSpec(StatusCode.OK))
                 .extract().body().as(UserResponseBody.class);
+
+
 
         Assertions.assertEquals(body.getName(), response.getName());
         Assertions.assertEquals(body.getJob(), response.getJob());
