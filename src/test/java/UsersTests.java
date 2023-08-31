@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import org.example.enums.StatusCode;
 import org.example.pojo.UserData;
@@ -12,6 +13,7 @@ import java.util.List;
 public class UsersTests {
 
     @Test
+    @Step("Проверка соответствия id в картинке")
     public void checkIdContainsAvatar() {
         getUsers().forEach(userData -> {
             Assertions.assertTrue(userData.getAvatar().contains(String.format("/%d-image.jpg", userData.getId())));
@@ -19,6 +21,7 @@ public class UsersTests {
     }
 
     @Test
+    @Step("Проверка окончания электронной почты")
     public void checkEmailEnding() {
         Assertions.assertTrue(getUsers().stream().allMatch(userData -> userData.getEmail().endsWith("@reqres.in")));
     }
